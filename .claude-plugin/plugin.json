@@ -1,0 +1,8 @@
+{
+  "name": "agentic",
+  "version": "0.1.0",
+  "description": "Developer tooling for auditing, porting, and building Claude Code skills and OpenCode plugin commands.",
+  "author": {
+    "name": "Raffi"
+  }
+}
