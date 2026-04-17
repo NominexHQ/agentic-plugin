@@ -161,8 +161,9 @@ tool registrations).
 
 After all files are written:
 
-1. Check TypeScript validity: run `tsc --noEmit` in the plugin directory if a `tsconfig.json`
-   exists, or inspect the file visually for obvious type errors
+1. **Compile check**: run `npx tsc --noEmit` in the plugin directory. If a `tsconfig.json`
+   does not exist, run it from the project root or with `--target ES2020 --moduleResolution node`
+   flags. Fix any type errors before proceeding.
 2. Verify the instruction file is referenced correctly from the DEFAULT_* constant
 3. Confirm the payload fields named in the instruction file match those returned by execute()
 4. Check that the tool `description` is specific enough to be unambiguous from sibling commands
