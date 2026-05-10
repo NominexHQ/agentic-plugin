@@ -57,6 +57,21 @@ OpenCode invocation in this package is **plugin-tool + instruction driven**.
 definitions for invocation. Slash commands can exist as optional UX wrappers elsewhere,
 but they are not part of the runtime contract for this plugin.
 
+## Typical trigger map
+
+The system prompt in `agentic.ts` includes default intent-routing guidance. Typical
+trigger phrases are:
+
+| OpenCode tool | Typical explicit trigger | Typical implicit intent signals |
+| --- | --- | --- |
+| `agentic_build_command` | "agentic_build_command", "build a command", "create a tool" | "add X to the plugin", "make a command that does Y", "automate this in OpenCode" |
+| `agentic_audit_skill` | "agentic_audit_skill", "audit this plugin", "review this skill" | "what does this skill do", "something seems off", "check if this skill is correct" |
+| `agentic_port_skill` | "agentic_port_skill", "port this skill" | "make an OpenCode version of this Claude skill", "convert this skill to OpenCode" |
+| `agentic_model` | "agentic_model", "change model", "set model" | "run this agent on <model>", "switch agent model", "what model is this agent using" |
+
+These are defaults, not hardcoded UI commands. If instruction overrides exist in
+`config/instructions/`, their routing language takes precedence.
+
 ## Runtime notes
 
 - This directory is published into the carve-out repo under `opencode/agentic-plugin/`.
