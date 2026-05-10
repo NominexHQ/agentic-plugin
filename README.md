@@ -25,24 +25,41 @@ and building new commands or skills through structured workflows.
 
 ## Canonical source and sync model
 
-This directory is the canonical source path inside the harness workspace:
+Canonical source currently lives inside the harness workspace at:
 
 `agentic-harness-dev/agentic-harness/claudecode/agentic-plugin/`
 
-The public carve-out repository `NominexHQ/agentic-plugin` is synced from this canonical
-path. Changes should be made here first, then propagated to the standalone repo.
+This public repo is synced from that canonical path.
 
 ## Quick start
 
 ### Install via local marketplace descriptor
 
-From the plugin root:
+Default assumption: you clone `agentic-plugin` into an existing project directory
+(not as the project root), then add that subdirectory as a marketplace.
+
+Example layout:
+
+```text
+my-project/
+└── agentic-plugin/
+```
+
+From `my-project/`:
 
 ```bash
-claude plugin marketplace add .
+claude plugin marketplace add ./agentic-plugin
 claude plugin install agentic@nominex-agentic-plugin-marketplace --scope project
 claude plugin reload
 ```
+
+If you are inside the plugin repo root itself, `claude plugin marketplace add .` also works.
+
+### Scope notes
+
+- `--scope project` installs the plugin only for the current repository.
+- `--scope user` installs it globally for your user account.
+- Recommended default for development/testing is `--scope project` to avoid cross-project bleed.
 
 ### Use key skills
 
@@ -70,7 +87,7 @@ agentic:audit_skill "<plugin> <skill-name>"
 2. **Version bump** in `.claude-plugin/plugin.json` for plugin-level changes.
 3. **Marketplace bump** in `.claude-plugin/marketplace.json` when publishing a new bundle.
 4. **Commit and push** canonical updates.
-5. **Sync carve-out repo** (`NominexHQ/agentic-plugin`) from canonical subtree.
+5. **Sync this public repo** from canonical subtree.
 
 Recommended commit style for plugin updates:
 - `build: ...` for skill/package updates
@@ -98,8 +115,3 @@ agentic-plugin/
 - Prefer spec-confirm-write loops over one-shot generation.
 - Keep cross-runtime translation honest: call out non-translatable behavior.
 - Reuse existing plugin conventions before introducing new patterns.
-
-## Related repos
-
-- `NominexHQ/agentic-harness-dev` - canonical workspace and packaging source
-- `NominexHQ/agentic-plugin` - standalone public carve-out repo
