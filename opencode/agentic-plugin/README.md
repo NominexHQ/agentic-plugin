@@ -43,6 +43,20 @@ The OpenCode plugin currently exposes these Agentic commands:
 These are wired through the system transform in `agentic.ts`, which routes user intent
 to instruction files and command payload workflows.
 
+## Invocation model
+
+OpenCode invocation in this package is **plugin-tool + instruction driven**.
+
+- Tools are defined in `plugins/agentic.ts` (`agentic_build_command`, `agentic_audit_skill`,
+  `agentic_port_skill`, `agentic_model`).
+- Tool execution returns payloads (typically `INSTRUCTION_READY`) consumed by the paired
+  instruction files in `plugins/instructions/agentic-*.md`.
+- The system transform in `agentic.ts` routes user intent to the appropriate tool.
+
+**No `/commands` dependency:** this package does not require OpenCode slash-command
+definitions for invocation. Slash commands can exist as optional UX wrappers elsewhere,
+but they are not part of the runtime contract for this plugin.
+
 ## Runtime notes
 
 - This directory is published into the carve-out repo under `opencode/agentic-plugin/`.
