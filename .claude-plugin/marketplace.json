@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "nominex-agentic-plugin-marketplace",
+  "version": "1.0.13",
+  "owner": {
+    "name": "NominexHQ",
+    "email": "hq@nominex.org"
+  },
+  "plugins": [
+    {
+      "name": "agentic",
+      "version": "0.1.1",
+      "source": "./",
+      "description": "Developer tooling for auditing, porting, and building Claude Code skills and OpenCode plugin commands. Audit a skill or OC command across 12 dimensions, port between runtimes, and build new OC commands via structured spec-and-build workflow."
+    }
+  ]
+}
