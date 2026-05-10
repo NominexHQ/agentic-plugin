@@ -44,6 +44,23 @@ Scope notes:
 - `--scope project` installs only for the current project (recommended)
 - `--scope user` installs globally for your user account
 
+### OpenCode
+
+OpenCode does not use Claude marketplace installation. Copy the packaged OpenCode bundle
+from this repo into your project's `.opencode/` directory.
+
+From your project root:
+
+```bash
+mkdir -p .opencode
+rsync -a ./agentic-plugin/opencode/agentic-plugin/ ./.opencode/
+```
+
+This installs:
+- `.opencode/plugins/` (including `agentic.ts` and instruction files)
+- `.opencode/opencode.json`
+- `.opencode/package.json`
+
 ## Source and sync
 
 This repository is sync-managed from the canonical harness workspace. Release sync publishes
